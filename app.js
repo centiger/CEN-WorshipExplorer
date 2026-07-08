@@ -149,7 +149,23 @@ const DATA = {
     }
   ],
   sacrifices: [
-    {id:'burnt', emoji:'🔥', title:'번제', group:'🔥 5대 제사', desc:'전부 드리는 제사'},
+    {id:'burnt', emoji:'🔥', title:'번제', group:'🔥 5대 제사', desc:'전부 드리는 제사', ready:true,
+      badges:['🔥 5대 제사','📖 자원 제사','🐂 짐승 제물','❤️ 온전한 헌신'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','번제'],['다른 명칭','온전히 태우는 제사'],['영어','Burnt Offering'],['히브리어','올라(Olah)'],['뜻','하나님께 올라가도록 온전히 불살라 드리는 제사']]},
+        {key:'definition', title:'📖 번제란?', body:['번제는 제물을 하나님께 온전히 불살라 드리는 제사입니다.', '제물을 남기지 않고 모두 태워 드림으로써 하나님께 자신의 삶 전체를 맡기고 헌신하는 예배를 의미합니다.', '번제는 레위기에 나오는 가장 기본적인 제사이며, 속죄와 헌신의 의미를 함께 담고 있습니다.']},
+        {key:'offering', title:'🐂 무엇을 드렸을까?', type:'flow', intro:'형편에 따라 드릴 수 있는 제물이 달랐습니다.', items:['🐂 소 — 가장 귀한 제물','🐑 양 — 흔히 드린 제물','🐐 염소 — 짐승 제물','🕊️ 산비둘기나 집비둘기 — 가난한 사람도 드릴 수 있음']},
+        {key:'practice', title:'🏛 어떻게 드렸을까?', type:'flow', intro:'제사를 드리는 사람과 제사장이 함께 참여했습니다.', items:['🙋 제물을 가져옴','🙏 제물의 머리에 안수','🔪 제물을 잡음','🩸 피를 번제단 사방에 뿌림','🔥 제물을 모두 태움','🌫 하나님께 향기로운 제사로 드림']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['번제는 하나님께 모든 것을 맡기고 자신을 온전히 드리는 헌신을 배우게 합니다.', '제물을 모두 태우는 방식은 일부만 드리는 것이 아니라 삶 전체를 하나님께 드린다는 고백을 보여 줍니다.', '또한 죄인을 대신한 제물의 죽음을 통해 하나님께 나아가는 길이 희생을 통해 열린다는 사실을 가르칩니다.']},
+        {key:'date', title:'📅 언제 드렸을까?', body:['매일 아침과 저녁에 드렸습니다.', '안식일과 절기에도 드렸습니다.', '개인이 자원하여 드릴 수도 있었습니다.', '번제는 이스라엘 예배에서 가장 기본적이고 반복적인 제사였습니다.']},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['🐂 제물','🙏 안수','🩸 피','🔥 모두 태움','❤️ 온전한 헌신']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['❤️ 나 자신','🔥 하나님께 드림','🙏 헌신','✨ 삶의 예배'], outro:'번제는 하나님께 무언가를 조금 드리는 수준이 아니라, 나의 삶 전체를 하나님께 맡기는 헌신의 예배를 가르쳐 줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🔥 번제','⛺ 성막','🏛 성전','✝️ 예수님의 희생','❤️ 삶의 예배'], outro:'번제는 성막과 성전 예배의 중심 제사였고, 신약에서는 예수님의 완전한 희생과 성도의 삶의 예배로 연결됩니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🔥 번제','❤️ 온전한 헌신','✝️ 예수님의 순종','🩸 십자가','🙏 하나님께 드려진 완전한 제물'], outro:'예수님은 자신의 몸을 온전히 하나님께 드리신 완전한 제물이셨습니다. 번제는 그리스도의 순종과 십자가의 헌신을 미리 보여 줍니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 1장, 출애굽기 29장', '신약: 히브리서 10장, 로마서 12:1']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['번제는 제물을 모두 하나님께 드림으로써, 나 자신을 하나님께 온전히 드리는 헌신의 제사입니다.']}
+      ]
+    },
     {id:'grain', emoji:'🌾', title:'소제', group:'🔥 5대 제사', desc:'곡식으로 드리는 감사'},
     {id:'peace', emoji:'🤝', title:'화목제', group:'🔥 5대 제사', desc:'하나님과의 교제'},
     {id:'sin', emoji:'🩸', title:'속죄제', group:'🔥 5대 제사', desc:'죄 사함과 정결'},
@@ -160,7 +176,7 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v1.1 Prototype · 안식년·희년 반영</p></main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v1.2 Prototype · 번제 반영</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
