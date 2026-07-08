@@ -51,19 +51,37 @@ const DATA = {
     {id:'weeks', emoji:'🌾', title:'칠칠절', group:'🟢 봄 절기', desc:'오순절, 맥추 감사', ready:true,
       badges:['🟢 봄 절기','⭐ 7대 절기','📖 시내산 언약','🔥 성령강림'],
       sections:[
-        {key:'names',title:'📛 다른 이름',type:'names',rows:[['개역개정','칠칠절'],['대표 명칭','오순절(Pentecost)'],['다른 명칭','맥추절'],['히브리어','샤부옷(Shavuot)'],['설명','유월절 후 50일째 되는 절기']]},
-        {key:'definition',title:'📖 칠칠절이란?',body:['칠칠절은 유월절 이후 50일째에 지키는 절기입니다.','밀 수확을 감사하며 하나님께 첫 열매를 드렸고, 후대에는 시내산에서 율법을 받은 것도 함께 기억했습니다.','신약에서는 성령께서 오신 오순절과 연결됩니다.']},
-        {key:'practice',title:'🏛 어떻게 지켰을까?',type:'flow',intro:'첫 열매를 하나님께 감사하며 드렸습니다.',items:['🌾 밀 수확','🍞 떡 두 개 준비','🙌 흔들어 드림','🔥 번제와 화목제','🎉 감사']},
-        {key:'why',title:'✨ 왜 중요할까?',body:['수확에 감사하는 절기이며 하나님의 말씀과 은혜를 기억하는 절기입니다.','신약에서는 성령강림으로 교회가 시작된 날이 되었습니다.']},
-        {key:'date',title:'📅 언제?',body:['유대력: 시완월 6일','오늘날: 5월 말~6월','유월절 후 50일','계절: 초여름']},
-        {key:'flow',title:'➡ Flow',type:'flow',items:['🐑 유월절','📅 50일','🌾 칠칠절','🔥 성령강림','⛪ 교회의 시작']},
-        {key:'meaning',title:'💭 Meaning',type:'flow',items:['🌾 첫 열매','🙏 감사','📜 말씀','🔥 성령','❤️ 새로운 공동체']},
-        {key:'panorama',title:'🌍 Panorama',type:'flow',items:['🐑 유월절','🌾 칠칠절','📜 율법','🔥 성령강림','⛪ 교회','🌍 복음 확장']},
-        {key:'jesus',title:'✝️ 예수님과의 연결',type:'flow',items:['✝️ 부활','⬆️ 승천','🔥 성령강림','⛪ 교회 시작'],outro:'오순절 성령강림은 예수님께서 약속하신 성령이 임한 사건입니다.'},
-        {key:'verses',title:'📚 관련 성경',body:['구약: 레위기 23:15~22','신약: 사도행전 2장']},
-        {key:'summary',title:'💎 이것만 기억하세요',body:['칠칠절은 첫 수확을 감사하는 절기이며 신약에서는 성령강림과 교회의 시작을 기념하는 오순절로 이어집니다.']}
-      ]},
-    {id:'trumpets', emoji:'📯', title:'나팔절', group:'🟠 가을 절기', desc:'나팔 소리와 새 시작'},
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','칠칠절'],['강조 명칭','오순절(Pentecost)'],['다른 명칭','맥추절'],['히브리어','샤부옷(Shavuot)'],['뜻','유월절 후 50일째 되는 절기']]},
+        {key:'definition', title:'📖 칠칠절이란?', body:['칠칠절은 유월절 이후 일곱 안식일, 곧 49일을 지난 다음 날인 50일째에 지키는 절기입니다.', '밀 수확을 감사하며 하나님께 첫 열매를 드리는 절기였고, 후대에는 하나님께서 시내산에서 율법을 주신 사건도 함께 기억하게 되었습니다.', '신약에서는 성령께서 오신 오순절과 연결되는 매우 중요한 절기입니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'유월절 후 50일째 되는 날에 지켰습니다.', items:['🌾 밀의 첫 열매를 거둠','🍞 누룩을 넣은 떡 두 개를 준비','🙌 하나님께 흔들어 드림','🔥 번제와 화목제를 드림','🎉 하나님께 감사']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['칠칠절은 하나님께서 풍성한 수확을 주신 것에 감사하는 절기입니다.', '또한 하나님께서 말씀을 주셔서 하나님의 백성으로 살아갈 길을 알려 주셨음을 기억하는 절기이기도 합니다.', '신약에서는 성령께서 오심으로 교회가 시작된 날이 되어 더욱 큰 의미를 갖습니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 시완월 6일로 이해됩니다.', '오늘날: 5월 말 ~ 6월', '유월절 후: 50일째', '계절: 초여름에 가까운 봄 절기']},
+        {key:'timeline50', title:'📅 50일 타임라인', type:'flow', items:['🐑 유월절','📅 50일','🌾 칠칠절','🔥 성령강림','⛪ 교회의 시작'], outro:'칠칠절은 유월절에서 50일 뒤에 지키는 절기입니다. 그래서 신약에서는 오순절이라는 이름으로 더 익숙합니다.'},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['🐑 유월절','📅 50일','🌾 밀 수확','🙌 첫 열매','🔥 성령강림','⛪ 교회의 시작']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['🌾 첫 열매','🙏 감사','📜 말씀','🔥 성령','❤️ 새로운 공동체'], outro:'칠칠절은 하나님께서 주신 수확과 말씀에 감사하며, 신약에서는 성령을 통해 새 공동체가 시작되었음을 보여 줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🐑 유월절','🌾 칠칠절','📜 율법','🔥 성령강림','⛪ 교회의 탄생','🌍 복음의 확장'], outro:'구약의 칠칠절은 첫 열매의 감사였고, 신약의 오순절은 복음의 첫 열매가 맺히기 시작한 날입니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['✝️ 예수님의 십자가','🌅 부활','☁️ 승천','🔥 성령강림','⛪ 교회의 시작'], outro:'예수님께서 부활하시고 승천하신 후, 오순절에 성령께서 제자들에게 임하셨습니다. 이날 교회가 시작되었고 복음이 세상으로 퍼져 나가기 시작했습니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 출애굽기 34:22, 레위기 23:15~22, 신명기 16:9~12', '신약: 사도행전 2장, 고린도전서 12장']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['칠칠절은 첫 수확을 감사하는 절기이며, 신약에서는 성령강림으로 교회가 시작된 오순절과 연결되는 절기입니다.']}
+      ]
+    },
+    {id:'trumpets', emoji:'📯', title:'나팔절', group:'🟠 가을 절기', desc:'나팔 소리와 새 시작', ready:true,
+      badges:['🟠 가을 절기','⭐ 7대 절기','📖 광야·성전 예배','👑 다시 오심의 소망'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','나팔절'],['다른 명칭','나팔 부는 날'],['성경 표현','기념하여 나팔을 부는 날'],['현대 유대교','로쉬 하샤나'],['영어','Feast of Trumpets']]},
+        {key:'definition', title:'📖 나팔절이란?', body:['나팔절은 나팔을 불어 거룩한 절기의 시작을 알리고, 하나님 앞에 자신을 돌아보도록 부르는 절기입니다.', '가을 절기의 첫 절기로, 이후 이어지는 속죄일과 초막절을 준비하는 의미가 있습니다.', '나팔 소리는 하나님의 백성을 깨우고, 거룩한 모임으로 부르는 신호였습니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'티쉬리월 1일에 지켰습니다.', items:['📯 나팔을 붐','🛑 일을 멈춤','🙏 거룩한 모임','🧎 회개와 준비','🙏 속죄일을 기다림']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['나팔절은 하나님의 백성이 영적으로 깨어나도록 부르는 절기입니다.', '나팔 소리는 단순한 악기 소리가 아니라, 하나님의 부르심과 회개의 요청, 심판과 구원의 준비를 상징합니다.', '가을 절기의 시작에서 나팔절은 마음을 깨우고 하나님 앞에 설 준비를 하게 합니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 티쉬리월 1일', '오늘날: 9월 ~ 10월', '계절: 가을 절기', '나팔절은 가을 절기의 문을 여는 첫 절기입니다.']},
+        {key:'autumn', title:'🍂 가을 절기 흐름', type:'flow', items:['📯 나팔절','🙏 속죄일','⛺ 초막절'], outro:'가을 절기는 나팔 소리로 깨어나고, 속죄일에 하나님 앞에서 죄를 다루며, 초막절의 기쁨으로 이어집니다.'},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['📯 나팔 소리','👂 하나님의 부르심','🧎 회개','🙏 속죄일 준비','⛺ 초막절의 기쁨']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['📯 깨어나라','🧎 돌아오라','🙏 준비하라','👑 주님을 기다리라'], outro:'나팔절은 하나님의 백성이 영적으로 잠들지 말고 깨어 하나님께 돌아오라는 부르심을 들려줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['📯 나팔절','🙏 속죄일','⛺ 초막절','📯 마지막 나팔','👑 그리스도의 다시 오심'], outro:'나팔절은 마지막 나팔과 주님의 다시 오심을 생각하게 하며, 하나님의 백성이 깨어 기다려야 함을 가르쳐 줍니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['📯 나팔 소리','👂 하나님의 부르심','🧎 깨어 있음','📯 마지막 나팔','👑 주님의 다시 오심'], outro:'나팔절이 예수님의 재림을 직접적으로 확정하는 절기라고 단정하기보다는, 하나님의 부르심과 깨어 있음, 마지막 나팔의 소망을 생각하게 하는 절기로 연결하는 것이 좋습니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 23:23~25, 민수기 29:1~6', '신약: 고린도전서 15:52, 데살로니가전서 4:16']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['나팔절은 나팔 소리로 하나님의 백성을 깨우고, 속죄일을 준비하게 하는 가을 절기의 시작입니다.']}
+      ]
+    },
     {id:'atonement', emoji:'🙏', title:'속죄일', group:'🟠 가을 절기', desc:'죄를 속하고 회복'},
     {id:'tabernacles', emoji:'⛺', title:'초막절', group:'🟠 가을 절기', desc:'광야 기억과 추수 감사'},
     {id:'sabbath-year', emoji:'🌱', title:'안식년', group:'⭐ 특별', desc:'일곱째 해의 쉼'},
@@ -81,8 +99,8 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.6 Prototype · 유월절 + 무교절 + 초실절 카드</p></main>`}
-function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${state.category==='festivals'?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${state.category==='festivals'?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>전체 구조를 먼저 보고, 하나씩 탐험합니다.</p></section>${groups.map(g=>`<div class="group-title">${g}</div>${arr.filter(x=>x.group===g).map(x=>`<button class="list-card" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>`).join('')}`).join('')}</main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.8 Prototype · 봄 절기 4개 + 나팔절</p></main>`}
+function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
 function card(){const item=currentItem(); const sec=item.sections[state.sectionIndex]; const dir=state.transition||''; return `<main class="screen card-view"><div class="card-shell ${dir}"><section class="card-head"><div class="crumb"><button onclick="setState({view:'home',modal:null})">🏠 홈</button> › ${state.category==='festivals'?'절기':'제사'} › ${item.group} › ${item.emoji} ${item.title}</div><h1><span class="title-emoji">${item.emoji}</span><span class="title-text">${item.title}</span></h1><div class="badges">${item.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div></section><div class="swipe-hint">좌우로 넘기거나 아래 버튼을 누르세요</div><section class="section-card">${renderSection(sec)}</section><div class="progress">${item.sections.map((_,i)=>`<span class="dot ${i===state.sectionIndex?'active':''}"></span>`).join('')} <span>${state.sectionIndex+1}/${item.sections.length}</span></div></div></main>${bottomNav(item)}`}
