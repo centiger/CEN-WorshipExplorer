@@ -99,7 +99,22 @@ const DATA = {
         {key:'summary', title:'💎 이것만 기억하세요', body:['속죄일은 하나님께서 죄를 용서하시는 길을 보여 준 절기이며, 예수 그리스도의 단 한 번의 십자가 희생으로 완성된 구속을 가장 분명하게 예표하는 절기입니다.']}
       ]
     },
-    {id:'tabernacles', emoji:'⛺', title:'초막절', group:'🟠 가을 절기', desc:'광야 기억과 추수 감사'},
+    {id:'tabernacles', emoji:'⛺', title:'초막절', group:'🟠 가을 절기', desc:'광야 기억과 추수 감사', ready:true,
+      badges:['🟠 가을 절기','⭐ 7대 절기','📖 광야 생활 기념','🏠 하나님이 함께하심'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','초막절'],['다른 명칭','장막절'],['또 다른 명칭','수장절'],['영어','Feast of Tabernacles / Feast of Booths'],['히브리어','수코트(Sukkot)']]},
+        {key:'definition', title:'📖 초막절이란?', body:['초막절은 이스라엘 백성이 광야 생활 동안 하나님께서 보호하시고 인도하신 은혜를 기억하기 위해 7일 동안 초막에서 생활하는 절기입니다.', '또한 한 해의 모든 수확을 마친 뒤 하나님께 감사드리는 기쁨과 감사의 절기이기도 합니다.', '초막절은 광야의 불안정한 삶 속에서도 하나님께서 자기 백성과 함께하셨음을 기억하게 합니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'티쉬리월 15일부터 21일까지 7일 동안 지켰습니다.', items:['⛺ 초막을 만듦','🏕 초막에서 생활','🌾 수확을 감사','🎉 하나님 앞에서 기뻐함','🙏 하나님의 함께하심을 기억']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['초막절은 하나님께서 자기 백성과 함께하신다는 사실을 기념하는 절기입니다.', '이스라엘은 광야에서 집도 땅도 안정도 없었지만, 하나님께서 먹이시고 보호하시고 인도하셨습니다.', '그래서 초막절은 오늘도 하나님의 백성이 하나님을 의지하며 감사와 기쁨으로 살아가야 함을 가르칩니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 티쉬리월 15~21일', '오늘날: 9월 ~ 10월', '기간: 7일', '계절: 가을 절기']},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['🏜 광야 생활','⛺ 초막','🛡 하나님의 보호','🌾 풍성한 수확','🎉 감사와 기쁨','🏠 하나님과 함께함']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['⛺ 임시 거처','🙏 하나님을 의지','❤️ 감사','🏠 하나님이 함께하심'], outro:'초막절은 삶의 안정이 집이나 소유가 아니라 하나님께 있음을 기억하게 합니다. 하나님이 함께하시면 광야도 은혜의 장소가 됩니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🏜 광야','⛺ 초막절','🏛 성전','✝️ 예수님의 오심','⛪ 교회','🌍 새 하늘과 새 땅'], outro:'초막절은 광야의 임시 거처에서 시작되어, 하나님께서 자기 백성과 영원히 함께 거하실 완성을 바라보게 합니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['⛺ 하나님이 함께하심','✝️ 예수님의 오심','💧 생수의 약속','⛪ 성령 안의 공동체','🌍 하나님이 함께하시는 완성'], outro:'예수님께서는 초막절 기간에 성전에서 자신을 생수의 근원으로 선포하셨습니다. 초막절은 하나님께서 우리와 함께하신다는 약속을 예수님 안에서 더 깊이 보게 합니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 23:33~43, 신명기 16:13~17, 스가랴 14:16~19', '신약: 요한복음 7장, 요한계시록 21:3']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['초막절은 광야에서 함께하신 하나님을 기억하며 감사하는 절기이며, 하나님께서 영원히 자기 백성과 함께하실 완성을 바라보게 하는 절기입니다.']}
+      ]
+    },
     {id:'sabbath-year', emoji:'🌱', title:'안식년', group:'⭐ 특별', desc:'일곱째 해의 쉼'},
     {id:'jubilee', emoji:'👑', title:'희년', group:'⭐ 특별', desc:'회복과 자유의 해'}
   ],
@@ -115,7 +130,7 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.9 Prototype · 속죄일 반영</p></main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v1.0 Prototype · 초막절 반영</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
