@@ -34,20 +34,35 @@ const DATA = {
   ]
 };
 
-let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null};
+let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
 function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('v0.1에서는 유월절 카드부터 확인합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.1 Prototype · 홈 → 절기 목록 → 유월절 카드 구조 검증용</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${state.category==='festivals'?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${state.category==='festivals'?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>전체 구조를 먼저 보고, 하나씩 탐험합니다.</p></section>${groups.map(g=>`<div class="group-title">${g}</div>${arr.filter(x=>x.group===g).map(x=>`<button class="list-card" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>`).join('')}`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
-function card(){const item=currentItem(); const sec=item.sections[state.sectionIndex]; return `<main class="screen"><section class="card-head"><div class="crumb">🏠 홈 › ${state.category==='festivals'?'절기':'제사'} › ${item.group} › ${item.emoji} ${item.title}</div><h1>${item.emoji} ${item.title}</h1><div class="badges">${item.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div></section><section class="section-card">${renderSection(sec)}</section><div class="progress">${item.sections.map((_,i)=>`<span class="dot ${i===state.sectionIndex?'active':''}"></span>`).join('')} <span>${state.sectionIndex+1}/${item.sections.length}</span></div></main>${bottomNav(item)}`}
+function card(){const item=currentItem(); const sec=item.sections[state.sectionIndex]; const dir=state.transition||''; return `<main class="screen card-view"><div class="card-shell ${dir}"><section class="card-head"><div class="crumb"><button onclick="setState({view:'home',modal:null})">🏠 홈</button> › ${state.category==='festivals'?'절기':'제사'} › ${item.group} › ${item.emoji} ${item.title}</div><h1>${item.emoji} ${item.title}</h1><div class="badges">${item.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div></section><div class="swipe-hint">좌우로 넘기거나 아래 버튼을 누르세요</div><section class="section-card">${renderSection(sec)}</section><div class="progress">${item.sections.map((_,i)=>`<span class="dot ${i===state.sectionIndex?'active':''}"></span>`).join('')} <span>${state.sectionIndex+1}/${item.sections.length}</span></div></div></main>${bottomNav(item)}`}
 function renderSection(sec){let html=`<h2>${sec.title}</h2>`; if(sec.type==='names'){html+=`<div class="names">${sec.rows.map(r=>`<div class="name-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join('')}</div>`} else if(sec.type==='flow'){ if(sec.intro) html+=`<p class="muted">${sec.intro}</p>`; html+=`<div class="flow">${sec.items.map((x,i)=>`${x}${i<sec.items.length-1?'<br><span class="arrow">↓</span><br>':''}`).join('')}</div>`; if(sec.outro) html+=`<p>${sec.outro}</p>`;} else {html+=sec.body.map(p=>`<p>${p}</p>`).join('')} return html;}
-function bottomNav(item){return `<nav class="bottom-nav"><div class="bottom-nav-inner"><button class="nav-btn" onclick="prevSection()" ${state.sectionIndex===0?'disabled':''}>◀ 이전</button><button class="nav-btn" onclick="setState({modal:'explorer'})">☰ 전체</button><button class="nav-btn" onclick="setState({modal:'sections'})">📑 목차</button><button class="nav-btn primary" onclick="nextSection()" ${state.sectionIndex===item.sections.length-1?'disabled':''}>다음 ▶</button></div></nav>`}
-function prevSection(){ if(state.sectionIndex>0) setState({sectionIndex:state.sectionIndex-1}); }
-function nextSection(){ const item=currentItem(); if(state.sectionIndex<item.sections.length-1) setState({sectionIndex:state.sectionIndex+1}); }
+function bottomNav(item){return `<nav class="bottom-nav"><div class="bottom-nav-inner"><button class="nav-btn" onclick="prevSection()" ${state.sectionIndex===0?'disabled':''}>◀ 이전</button><button class="nav-btn" onclick="setState({view:'home',modal:null})">🏠 홈</button><button class="nav-btn" onclick="setState({modal:'explorer'})">☰ 전체</button><button class="nav-btn" onclick="setState({modal:'sections'})">📑 목차</button><button class="nav-btn primary" onclick="nextSection()" ${state.sectionIndex===item.sections.length-1?'disabled':''}>다음 ▶</button></div></nav>`}
+function prevSection(){ if(state.sectionIndex>0) setState({sectionIndex:state.sectionIndex-1,transition:'prev'}); }
+function nextSection(){ const item=currentItem(); if(state.sectionIndex<item.sections.length-1) setState({sectionIndex:state.sectionIndex+1,transition:'next'}); }
 function modal(){ if(!state.modal) return ''; const item=currentItem(); if(state.modal==='explorer'){const arr=DATA[state.category]; const groups=[...new Set(arr.map(x=>x.group))]; return `<div class="modal" onclick="setState({modal:null})"><div class="sheet" onclick="event.stopPropagation()"><button class="close" onclick="setState({modal:null})">닫기</button><h2>${state.category==='festivals'?'🎉 절기 전체':'🔥 제사 전체'}</h2>${groups.map(g=>`<div class="group-title">${g}</div>${arr.filter(x=>x.group===g).map(x=>`<button class="item ${x.id===state.itemId?'active':''}" onclick="${x.ready?`setState({itemId:'${x.id}',sectionIndex:0,modal:null})`:`alert('준비중입니다.')`}">${x.id===state.itemId?'▶ ':''}${x.emoji} ${x.title}<br><span class="muted">${x.desc}</span></button>`).join('')}`).join('')}</div></div>`}
 return `<div class="modal" onclick="setState({modal:null})"><div class="sheet" onclick="event.stopPropagation()"><button class="close" onclick="setState({modal:null})">닫기</button><h2>📑 ${item.title} 목차</h2>${item.sections.map((s,i)=>`<button class="item ${i===state.sectionIndex?'active':''}" onclick="setState({sectionIndex:${i},modal:null})">${i===state.sectionIndex?'▶ ':''}${s.title}</button>`).join('')}</div></div>`}
 function render(){app.innerHTML = state.view==='home'?home():state.view==='list'?list():card(); app.insertAdjacentHTML('beforeend', modal());}
+
+let touchStartX=0, touchStartY=0;
+app.addEventListener('touchstart', e=>{
+  if(state.view!=='card' || state.modal) return;
+  const t=e.changedTouches[0]; touchStartX=t.clientX; touchStartY=t.clientY;
+},{passive:true});
+app.addEventListener('touchend', e=>{
+  if(state.view!=='card' || state.modal) return;
+  const t=e.changedTouches[0];
+  const dx=t.clientX-touchStartX, dy=t.clientY-touchStartY;
+  if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.35){
+    if(dx<0) nextSection(); else prevSection();
+  }
+},{passive:true});
+
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 render();
