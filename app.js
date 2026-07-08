@@ -32,7 +32,22 @@ const DATA = {
         {key:'summary', title:'💎 이것만 기억하세요', body:['무교절은 누룩 없는 빵을 먹으며 출애굽을 기억하고, 죄를 버리고 거룩한 삶을 살아가야 함을 배우는 절기입니다.']}
       ]
     },
-    {id:'firstfruits', emoji:'🌾', title:'초실절', group:'🟢 봄 절기', desc:'첫 열매를 하나님께'},
+    {id:'firstfruits', emoji:'🌾', title:'초실절', group:'🟢 봄 절기', desc:'첫 열매를 하나님께', ready:true,
+      badges:['🟢 봄 절기','⭐ 7대 절기','📖 가나안 정착','🌅 부활 예표'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','초실절'],['다른 명칭','첫 이삭 드리는 절기'],['영어','Feast of Firstfruits'],['히브리어','레쉬트 카치르(Reshit Katzir)'],['뜻','첫 수확을 하나님께 먼저 드리는 절기']]},
+        {key:'definition', title:'📖 초실절이란?', body:['초실절은 한 해의 첫 수확을 하나님께 감사하며 가장 먼저 드리는 절기입니다.', '이스라엘 백성은 첫 열매를 자신의 것으로 여기지 않고 하나님께 먼저 바침으로, 모든 수확이 하나님께로부터 왔음을 고백했습니다.', '첫 열매를 드리는 것은 남은 모든 수확도 하나님께서 채워 주실 것을 믿는 믿음의 표현이었습니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'무교절 기간 중 첫 수확을 하나님께 드렸습니다.', items:['🌾 첫 이삭을 거둠','🙌 제사장에게 가져감','🌾 첫 이삭을 흔들어 드림','🔥 번제를 드림','🙏 하나님께 감사']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['초실절은 감사의 절기인 동시에 믿음의 절기입니다.', '아직 모든 곡식을 거두기 전인데도 첫 열매를 하나님께 먼저 드림으로, 앞으로의 모든 수확도 하나님께서 책임져 주실 것을 믿었습니다.', '초실절은 하나님께 먼저 드리는 삶, 그리고 하나님이 채우실 것을 신뢰하는 삶을 가르칩니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 니산월 16일로 이해되며, 무교절 기간 중 첫 수확과 연결됩니다.', '오늘날: 3월 말 ~ 4월 중순', '계절: 봄 절기', '유대력을 사용하므로 매년 날짜가 조금씩 달라집니다.']},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['🌱 첫 수확','🌾 첫 이삭','🙌 하나님께 드림','🙏 감사','🎁 풍성한 수확의 약속']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['🌾 첫 열매','🙏 하나님께 먼저','❤️ 믿음','🎁 하나님이 채우심'], outro:'초실절은 가장 먼저 얻은 것을 하나님께 드림으로, 모든 것이 하나님께 속했고 앞으로의 삶도 하나님께 맡긴다는 믿음을 보여 줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🌾 초실절','🌾 첫 열매','✝️ 예수님의 부활','⛪ 교회의 시작','🌍 영원한 생명의 소망'], outro:'초실절은 첫 열매를 드리는 절기에서 시작되어, 신약에서는 예수님의 부활과 믿는 자들의 부활 소망으로 연결됩니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🌾 초실절','✝️ 예수님의 부활','🌅 부활의 첫 열매','⛪ 믿는 자의 부활','🌍 영원한 생명'], outro:'예수님은 죽은 자 가운데서 다시 살아나신 첫 열매이십니다. 예수님의 부활은 앞으로 모든 믿는 자들이 부활할 것을 보증합니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 23:9~14', '신약: 고린도전서 15:20~23, 마태복음 28장, 마가복음 16장, 누가복음 24장, 요한복음 20장']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['초실절은 첫 열매를 하나님께 드리는 감사의 절기이며, 예수 그리스도의 부활을 가장 아름답게 예표하는 절기입니다.']}
+      ]
+    },
     {id:'weeks', emoji:'🌾', title:'칠칠절', group:'🟢 봄 절기', desc:'오순절, 맥추 감사'},
     {id:'trumpets', emoji:'📯', title:'나팔절', group:'🟠 가을 절기', desc:'나팔 소리와 새 시작'},
     {id:'atonement', emoji:'🙏', title:'속죄일', group:'🟠 가을 절기', desc:'죄를 속하고 회복'},
@@ -52,7 +67,7 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('v0.1에서는 유월절 카드부터 확인합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.5 Prototype · 유월절 + 무교절 카드</p></main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v0.6 Prototype · 유월절 + 무교절 + 초실절 카드</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${state.category==='festivals'?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${state.category==='festivals'?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>전체 구조를 먼저 보고, 하나씩 탐험합니다.</p></section>${groups.map(g=>`<div class="group-title">${g}</div>${arr.filter(x=>x.group===g).map(x=>`<button class="list-card" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>`).join('')}`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
