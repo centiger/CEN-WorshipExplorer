@@ -26,13 +26,13 @@ const DATA = {
         {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 니산월 15~21일', '오늘날: 3월 말 ~ 4월 중순', '기간: 7일', '계절: 봄 절기']},
         {key:'flow', title:'➡ Flow', type:'flow', items:['🐑 유월절','🍞 무교병','🧹 누룩 제거','✨ 거룩함','🙏 순종','🌿 새로운 삶']},
         {key:'meaning', title:'💭 Meaning', type:'flow', items:['🍞 무교병','❌ 죄를 버림','❤️ 깨끗한 삶','🙏 하나님께 순종'], outro:'무교절은 구원받은 백성이 옛 죄와 부패를 버리고 하나님 앞에서 깨끗하고 진실하게 살아야 함을 가르쳐 줍니다.'},
-        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🐑 유월절','🍞 무교절','🌾 초실절','🌾 칠칠절','✝️ 예수님의 죽음','⛪ 성도의 거룩한 삶'], outro:'무교절은 유월절의 구원 사건과 이어지며, 신약에서는 그리스도 안에서 새롭게 살아가는 성도의 삶으로 연결됩니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🐑 유월절','🍞 무교절','🍇 초실절','🌾 칠칠절','✝️ 예수님의 죽음','⛪ 성도의 거룩한 삶'], outro:'무교절은 유월절의 구원 사건과 이어지며, 신약에서는 그리스도 안에서 새롭게 살아가는 성도의 삶으로 연결됩니다.'},
         {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🍞 무교병','✨ 죄 없으심','✝️ 십자가','❤️ 진실함과 순결','⛪ 성도의 새 삶'], outro:'예수님은 죄가 없으신 참된 무교병과 같은 분입니다. 신약은 성도에게 묵은 누룩을 버리고 순전함과 진실함으로 살아가라고 가르칩니다.'},
         {key:'verses', title:'📚 관련 성경', body:['구약: 출애굽기 12:15~20, 레위기 23:6~8, 신명기 16:3~8', '신약: 고린도전서 5:6~8']},
         {key:'summary', title:'💎 이것만 기억하세요', body:['무교절은 누룩 없는 빵을 먹으며 출애굽을 기억하고, 죄를 버리고 거룩한 삶을 살아가야 함을 배우는 절기입니다.']}
       ]
     },
-    {id:'firstfruits', emoji:'🌾', title:'초실절', group:'🟢 봄 절기', desc:'첫 열매를 하나님께', ready:true,
+    {id:'firstfruits', emoji: "🍇", title:'초실절', group:'🟢 봄 절기', desc:'첫 열매를 하나님께', ready:true,
       badges:['🟢 봄 절기','⭐ 7대 절기','📖 가나안 정착','🌅 부활 예표'],
       sections:[
         {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','초실절'],['다른 명칭','첫 이삭 드리는 절기'],['영어','Feast of Firstfruits'],['히브리어','레쉬트 카치르(Reshit Katzir)'],['뜻','첫 수확을 하나님께 먼저 드리는 절기']]},
@@ -42,8 +42,8 @@ const DATA = {
         {key:'date', title:'📅 언제 지켰을까?', body:['유대력: 니산월 16일로 이해되며, 무교절 기간 중 첫 수확과 연결됩니다.', '오늘날: 3월 말 ~ 4월 중순', '계절: 봄 절기', '유대력을 사용하므로 매년 날짜가 조금씩 달라집니다.']},
         {key:'flow', title:'➡ Flow', type:'flow', items:['🌱 첫 수확','🌾 첫 이삭','🙌 하나님께 드림','🙏 감사','🎁 풍성한 수확의 약속']},
         {key:'meaning', title:'💭 Meaning', type:'flow', items:['🌾 첫 열매','🙏 하나님께 먼저','❤️ 믿음','🎁 하나님이 채우심'], outro:'초실절은 가장 먼저 얻은 것을 하나님께 드림으로, 모든 것이 하나님께 속했고 앞으로의 삶도 하나님께 맡긴다는 믿음을 보여 줍니다.'},
-        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🌾 초실절','🌾 첫 열매','✝️ 예수님의 부활','⛪ 교회의 시작','🌍 영원한 생명의 소망'], outro:'초실절은 첫 열매를 드리는 절기에서 시작되어, 신약에서는 예수님의 부활과 믿는 자들의 부활 소망으로 연결됩니다.'},
-        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🌾 초실절','✝️ 예수님의 부활','🌅 부활의 첫 열매','⛪ 믿는 자의 부활','🌍 영원한 생명'], outro:'예수님은 죽은 자 가운데서 다시 살아나신 첫 열매이십니다. 예수님의 부활은 앞으로 모든 믿는 자들이 부활할 것을 보증합니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🍇 초실절','🌾 첫 열매','✝️ 예수님의 부활','⛪ 교회의 시작','🌍 영원한 생명의 소망'], outro:'초실절은 첫 열매를 드리는 절기에서 시작되어, 신약에서는 예수님의 부활과 믿는 자들의 부활 소망으로 연결됩니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🍇 초실절','✝️ 예수님의 부활','🌅 부활의 첫 열매','⛪ 믿는 자의 부활','🌍 영원한 생명'], outro:'예수님은 죽은 자 가운데서 다시 살아나신 첫 열매이십니다. 예수님의 부활은 앞으로 모든 믿는 자들이 부활할 것을 보증합니다.'},
         {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 23:9~14', '신약: 고린도전서 15:20~23, 마태복음 28장, 마가복음 16장, 누가복음 24장, 요한복음 20장']},
         {key:'summary', title:'💎 이것만 기억하세요', body:['초실절은 첫 열매를 하나님께 드리는 감사의 절기이며, 예수 그리스도의 부활을 가장 아름답게 예표하는 절기입니다.']}
       ]
@@ -244,7 +244,7 @@ function home(){return `<main class="screen"><section class="hero"><div class="e
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function compare(){
   const festivalRows=[
-    ['🐑 유월절','구원','✝️ 십자가'],['🍞 무교절','거룩','✨ 죄 없으심'],['🌾 초실절','첫 열매','🌅 부활'],['🌾 칠칠절','성령','⛪ 교회 시작'],['📯 나팔절','깨어 있음','👑 재림 소망'],['🙏 속죄일','죄 사함','🩸 대속'],['⛺ 초막절','함께하심','🌍 새 하늘과 새 땅'],['🌱 안식년','쉼','😌 참된 안식'],['👑 희년','자유','❤️ 복음']
+    ['🐑 유월절','구원','✝️ 십자가'],['🍞 무교절','거룩','✨ 죄 없으심'],['🍇 초실절','첫 열매','🌅 부활'],['🌾 칠칠절','성령','⛪ 교회 시작'],['📯 나팔절','깨어 있음','👑 재림 소망'],['🙏 속죄일','죄 사함','🩸 대속'],['⛺ 초막절','함께하심','🌍 새 하늘과 새 땅'],['🌱 안식년','쉼','😌 참된 안식'],['👑 희년','자유','❤️ 복음']
   ];
   const sacrificeRows=[
     ['🔥 번제','헌신','모두 태움'],['🌾 소제','감사','곡식 제물'],['🤝 화목제','교제','함께 나눔'],['🩸 속죄제','죄 사함','속죄'],['⚖️ 속건제','회복','배상']
