@@ -115,8 +115,38 @@ const DATA = {
         {key:'summary', title:'💎 이것만 기억하세요', body:['초막절은 광야에서 함께하신 하나님을 기억하며 감사하는 절기이며, 하나님께서 영원히 자기 백성과 함께하실 완성을 바라보게 하는 절기입니다.']}
       ]
     },
-    {id:'sabbath-year', emoji:'🌱', title:'안식년', group:'⭐ 특별', desc:'일곱째 해의 쉼'},
-    {id:'jubilee', emoji:'👑', title:'희년', group:'⭐ 특별', desc:'회복과 자유의 해'}
+    {id:'sabbath-year', emoji:'🌱', title:'안식년', group:'⭐ 특별한 해', desc:'일곱째 해의 쉼과 신뢰', ready:true,
+      badges:['⭐ 특별한 해','📖 7년마다','🌾 땅의 안식','🙏 하나님을 신뢰'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','안식년'],['다른 명칭','제7년'],['영어','Sabbatical Year'],['히브리어','쉐미타(Shemittah)'],['뜻','7년마다 땅과 사람에게 쉼을 주는 해']]},
+        {key:'definition', title:'📖 안식년이란?', body:['안식년은 7년마다 농사를 쉬고, 빚을 탕감하며, 하나님의 공급을 신뢰하도록 제정된 특별한 해입니다.', '이스라엘은 땅도 하나님의 것이며, 모든 삶이 하나님의 은혜로 유지된다는 사실을 배우게 되었습니다.', '안식년은 매년 지키는 절기는 아니지만, 하나님께서 시간과 땅과 삶의 주인이심을 보여 주는 중요한 제도입니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'여섯 해 동안 경작하고 일곱째 해에는 땅을 쉬게 했습니다.', items:['🌾 6년 동안 경작','🛑 7년째 땅을 쉼','💰 빚을 탕감','🍇 저절로 난 것은 함께 나눔','🙏 하나님을 신뢰']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['안식년은 사람뿐 아니라 땅도 쉼이 필요하며, 하나님께서 모든 것을 공급하신다는 사실을 배우는 제도입니다.', '이스라엘은 쉬는 해에도 하나님께서 먹이신다는 믿음을 훈련했습니다.', '안식년은 소유와 생산보다 하나님을 신뢰하는 삶이 더 중요하다는 것을 가르칩니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['주기: 매 7년마다', '성격: 매년 지키는 절기가 아니라 특별한 해', '핵심: 땅의 안식, 빚 탕감, 하나님 신뢰']},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['6️⃣ 여섯 해 경작','7️⃣ 일곱째 해 쉼','🌱 땅의 안식','🤝 빚 탕감','🙏 하나님을 신뢰']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['🌱 쉼','🤲 공급','❤️ 신뢰','🙏 순종'], outro:'안식년은 삶을 유지하는 힘이 인간의 생산력만이 아니라 하나님의 공급하심에 있음을 가르쳐 줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['🌱 안식년','👑 희년','✝️ 예수님의 안식','🌍 하나님 나라'], outro:'안식년은 희년으로 확장되고, 궁극적으로 예수님 안에서 누리는 참된 안식으로 연결됩니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['🌱 쉼의 약속','🙏 하나님 신뢰','✝️ 예수님의 초청','❤️ 참된 안식'], outro:'예수님께서는 수고하고 무거운 짐 진 자들에게 참된 안식을 주시겠다고 말씀하셨습니다. 안식년은 예수님 안에서 누리는 안식을 바라보게 합니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 출애굽기 23:10~11, 레위기 25:1~7, 신명기 15:1~11', '신약 연결: 마태복음 11:28~30']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['안식년은 하나님께서 모든 삶의 주인이심을 인정하며 쉼과 신뢰를 배우는 특별한 해입니다.']}
+      ]
+    },
+    {id:'jubilee', emoji:'👑', title:'희년', group:'⭐ 특별한 해', desc:'자유와 회복의 해', ready:true,
+      badges:['⭐ 특별한 해','📖 50년마다','📯 자유의 선포','❤️ 회복과 은혜'],
+      sections:[
+        {key:'names', title:'📛 다른 이름', type:'names', rows:[['개역개정','희년'],['다른 명칭','자유의 해'],['영어','Jubilee'],['히브리어','요벨(Yovel)'],['뜻','50년마다 자유와 회복을 선포하는 해']]},
+        {key:'definition', title:'📖 희년이란?', body:['희년은 안식년을 일곱 번, 곧 49년이 지난 다음 해에 선포되는 특별한 해입니다.', '희년에는 종이 자유를 얻고, 땅은 원래 주인에게 돌아가며, 공동체가 새롭게 회복되었습니다.', '희년은 하나님께서 자기 백성에게 자유와 회복을 주시는 은혜의 해입니다.']},
+        {key:'practice', title:'🏛 어떻게 지켰을까?', type:'flow', intro:'일곱 번째 안식년 다음 해에 자유와 회복을 선포했습니다.', items:['📯 나팔을 붐','🔓 종을 자유롭게 함','🏡 땅을 원주인에게 돌려줌','🤝 공동체 회복','❤️ 하나님의 은혜를 기뻐함']},
+        {key:'why', title:'✨ 왜 중요할까?', body:['희년은 모든 것을 회복시키시는 하나님의 은혜를 보여 주는 제도입니다.', '가난과 빚과 종살이가 영원히 고착되지 않도록 하나님께서 회복의 길을 열어 주셨습니다.', '희년은 경제적 회복을 넘어, 하나님의 백성이 다시 자유를 누리게 되는 은혜의 선언입니다.']},
+        {key:'date', title:'📅 언제 지켰을까?', body:['주기: 50년마다', '계산: 안식년 7번 후', '성격: 매년 절기가 아니라 특별한 해', '핵심: 자유 선포, 땅 반환, 공동체 회복']},
+        {key:'flow', title:'➡ Flow', type:'flow', items:['7️⃣×7 안식년','📯 나팔','🔓 자유','🏡 회복','❤️ 하나님의 은혜']},
+        {key:'meaning', title:'💭 Meaning', type:'flow', items:['📯 자유','🤝 회복','❤️ 은혜','👑 하나님 나라'], outro:'희년은 하나님께서 잃어버린 것을 회복시키시고, 묶인 자에게 자유를 주시는 분임을 보여 줍니다.'},
+        {key:'panorama', title:'🌍 Panorama', type:'flow', items:['👑 희년','📜 이사야의 약속','✝️ 예수님의 복음','❤️ 은혜','🌍 새 하늘과 새 땅'], outro:'희년의 자유와 회복은 예수님의 복음 안에서 더 깊이 성취되며, 하나님 나라의 완성을 바라보게 합니다.'},
+        {key:'jesus', title:'✝️ 예수님과의 연결', type:'flow', items:['📜 주의 은혜의 해','✝️ 예수님의 선포','🔓 죄와 사망에서 자유','❤️ 복음의 은혜','👑 하나님 나라'], outro:'예수님께서는 누가복음 4장에서 “주의 은혜의 해”를 선포하시며 자신의 사역을 밝히셨습니다. 희년은 예수님 안에서 주어지는 참된 자유와 회복을 보여 줍니다.'},
+        {key:'verses', title:'📚 관련 성경', body:['구약: 레위기 25:8~55, 이사야 61:1~2', '신약: 누가복음 4:16~21']},
+        {key:'summary', title:'💎 이것만 기억하세요', body:['희년은 자유와 회복을 선포하는 특별한 해이며, 예수 그리스도 안에서 완성된 하나님의 은혜를 보여 줍니다.']}
+      ]
+    }
   ],
   sacrifices: [
     {id:'burnt', emoji:'🔥', title:'번제', group:'🔥 5대 제사', desc:'전부 드리는 제사'},
@@ -130,7 +160,7 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v1.0 Prototype · 초막절 반영</p></main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="alert('비교 화면은 다음 단계에서 연결합니다.')"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 표와 흐름으로 정리합니다.</p></div></button></div><p class="small-note">v1.1 Prototype · 안식년·희년 반영</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
