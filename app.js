@@ -240,7 +240,7 @@ const DATA = {
 let state = {view:'home', category:null, itemId:null, sectionIndex:0, modal:null, transition:''};
 const app = document.getElementById('app');
 function setState(p){ state={...state,...p}; render(); }
-function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="setState({view:'compare',modal:null})"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 한 화면에서 정리합니다.</p></div></button></div><p class="small-note">v1.7 · 한눈에 비교 반영</p></main>`}
+function home(){return `<main class="screen"><section class="hero"><div class="eyebrow">CEN BIBLE 2.0</div><h1>절기와 제사</h1><p class="subtitle">하나님께서 주신 예배의 시간과 방법을 이해하는 탐험</p></section><div class="grid"><button class="home-card" onclick="setState({view:'list',category:'festivals'})"><div class="icon">🎉</div><div><h2>절기 Explorer</h2><p>봄 절기, 가을 절기, 특별한 해를 따라갑니다.</p></div></button><button class="home-card" onclick="setState({view:'list',category:'sacrifices'})"><div class="icon">🔥</div><div><h2>제사 Explorer</h2><p>번제, 소제, 화목제, 속죄제, 속건제를 이해합니다.</p></div></button><button class="home-card" onclick="setState({view:'compare',modal:null})"><div class="icon">📊</div><div><h2>한눈에 비교</h2><p>절기와 제사의 차이를 한 화면에서 정리합니다.</p></div></button></div><p class="small-note">v1.9 · 성경구절 직접 연결</p></main>`}
 function list(){const arr=DATA[state.category]; let groups=[...new Set(arr.map(x=>x.group))]; const isFest=state.category==='festivals'; return `<main class="screen"><div class="topbar"><button onclick="setState({view:'home'})">🏠 홈</button><span>› ${isFest?'절기 Explorer':'제사 Explorer'}</span></div><section class="page-title"><h1>${isFest?'🎉 절기 Explorer':'🔥 제사 Explorer'}</h1><p>${isFest?'절기는 하나님의 구원 계획을 시간의 흐름 속에서 보여 주는 거룩한 절기입니다.':'제사는 하나님께 나아가는 예배의 방법을 보여 줍니다.'}</p></section>${groups.map(g=>`<div class="group-title">${g}</div><div class="${isFest?'flow-list':'plain-list'}">${arr.filter(x=>x.group===g).map((x,idx,groupArr)=>`<button class="list-card ${x.ready?'ready':'not-ready'}" onclick="openItem('${x.id}')"><div class="left"><div class="emoji">${x.emoji}</div><div><strong>${x.title}</strong><span>${x.desc}</span></div></div><div>${x.ready?'▶':'준비중'}</div></button>${isFest && idx<groupArr.length-1?'<div class="list-connector">│</div>':''}`).join('')}</div>`).join('')}</main>`}
 function compare(){
   const festivalRows=[
@@ -256,7 +256,28 @@ function compare(){
 function openItem(id){ const item=DATA[state.category].find(x=>x.id===id); if(!item.ready){alert('아직 준비중입니다. 유월절 카드로 구조를 먼저 검토합니다.'); return;} setState({view:'card',itemId:id,sectionIndex:0}); }
 function currentItem(){return DATA[state.category].find(x=>x.id===state.itemId)}
 function card(){const item=currentItem(); const sec=item.sections[state.sectionIndex]; const dir=state.transition||''; return `<main class="screen card-view"><div class="card-shell ${dir}"><section class="card-head"><div class="crumb"><button onclick="setState({view:'home',modal:null})">🏠 홈</button> › ${state.category==='festivals'?'절기':'제사'} › ${item.group} › ${item.emoji} ${item.title}</div><h1><span class="title-emoji">${item.emoji}</span><span class="title-text">${item.title}</span></h1><div class="badges">${item.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div></section><div class="swipe-hint">좌우로 넘기거나 아래 버튼을 누르세요</div><section class="section-card">${renderSection(sec)}</section><div class="progress">${item.sections.map((_,i)=>`<span class="dot ${i===state.sectionIndex?'active':''}"></span>`).join('')} <span>${state.sectionIndex+1}/${item.sections.length}</span></div></div></main>${bottomNav(item)}`}
-function renderSection(sec){let html=`<h2>${sec.title}</h2>`; if(sec.type==='names'){html+=`<div class="names">${sec.rows.map(r=>`<div class="name-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join('')}</div>`} else if(sec.type==='flow'){ if(sec.intro) html+=`<p class="muted">${sec.intro}</p>`; html+=`<div class="timeline">${sec.items.map((x,i)=>`<div class="tl-row"><div class="tl-line"><span class="tl-dot"></span></div><div class="tl-text">${x}</div></div>`).join('')}</div>`; if(sec.outro) html+=`<p>${sec.outro}</p>`;} else {html+=sec.body.map(p=>`<p>${p}</p>`).join('')} return html;}
+function normalizeBibleRef(ref){
+  let clean=String(ref||'').trim().replace(/[.。]+$/,'');
+  clean=clean.replace(/^(구약|신약|신약 연결)\s*:\s*/,'').trim();
+  let m=clean.match(/^(.+?)\s+(\d+)\s*장\s*(?:[~～\-]\s*\d+\s*장?)?$/);
+  if(m) return `${m[1].trim()} ${m[2]}:1`;
+  m=clean.match(/^(.+?)\s+(\d+)\s*[~～\-]\s*(\d+)\s*장$/);
+  if(m) return `${m[1].trim()} ${m[2]}:1`;
+  return clean;
+}
+function bibleUrl(ref){
+  const clean=normalizeBibleRef(ref);
+  const base='https://centiger.github.io/CEN-Bible2.0/';
+  return `${base}?ref=${encodeURIComponent(clean)}&source=worship&returnTo=${encodeURIComponent(location.href)}`;
+}
+function renderVerseLine(line){
+  const text=String(line||'');
+  const colon=text.indexOf(':');
+  const label=colon>=0?text.slice(0,colon+1):'';
+  const refs=(colon>=0?text.slice(colon+1):text).split(',').map(x=>x.trim()).filter(Boolean);
+  return `<p class="verse-line">${label?`<span class="verse-label">${label}</span>`:''}<span class="verse-links">${refs.map(ref=>`<a class="bible-ref-link" href="${bibleUrl(ref)}" aria-label="${ref} 성경 보기">${ref}</a>`).join('<span class="verse-comma">, </span>')}</span></p>`;
+}
+function renderSection(sec){let html=`<h2>${sec.title}</h2>`; if(sec.type==='names'){html+=`<div class="names">${sec.rows.map(r=>`<div class="name-row"><b>${r[0]}</b><span>${r[1]}</span></div>`).join('')}</div>`} else if(sec.type==='flow'){ if(sec.intro) html+=`<p class="muted">${sec.intro}</p>`; html+=`<div class="timeline">${sec.items.map((x,i)=>`<div class="tl-row"><div class="tl-line"><span class="tl-dot"></span></div><div class="tl-text">${x}</div></div>`).join('')}</div>`; if(sec.outro) html+=`<p>${sec.outro}</p>`;} else if(sec.key==='verses'){html+=sec.body.map(renderVerseLine).join('')} else {html+=sec.body.map(p=>`<p>${p}</p>`).join('')} return html;}
 function bottomNav(item){const last=state.sectionIndex===item.sections.length-1; return `<nav class="bottom-nav"><div class="bottom-nav-inner"><button class="nav-btn" onclick="prevSection()" ${state.sectionIndex===0?'disabled':''}>◀ 이전</button><button class="nav-btn" onclick="setState({view:'home',modal:null})">🏠 홈</button><button class="nav-btn" onclick="setState({modal:'explorer'})">☰ 전체</button><button class="nav-btn" onclick="setState({modal:'sections'})">📑 목차</button><button class="nav-btn primary" onclick="${last?"setState({view:'list',category:state.category,modal:null})":"nextSection()"}">${last?'목록으로':'다음 ▶'}</button></div></nav>`}
 function prevSection(){ if(state.sectionIndex>0) setState({sectionIndex:state.sectionIndex-1,transition:'prev'}); }
 function nextSection(){ const item=currentItem(); if(state.sectionIndex<item.sections.length-1) setState({sectionIndex:state.sectionIndex+1,transition:'next'}); }

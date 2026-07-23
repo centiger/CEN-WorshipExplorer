@@ -1,12 +1,26 @@
-const CACHE='cen-worship-explorer-v17-compare';
-const ASSETS=['./','./index.html','./style.css?v=1.7','./app.js?v=1.7','./manifest.json','./icons/icon-192.png','./icons/icon-512.png'];
-self.addEventListener('install',e=>{ self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))); });
-self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))); self.clients.claim(); });
-self.addEventListener('fetch',e=>{
-  const req=e.request;
-  if(req.mode==='navigate' || req.destination==='script' || req.destination==='style'){
-    e.respondWith(fetch(req).then(res=>{ const copy=res.clone(); caches.open(CACHE).then(c=>c.put(req,copy)); return res; }).catch(()=>caches.match(req).then(r=>r||caches.match('./index.html'))));
+const CACHE='cen-worship-explorer-v191-bible-anchor-links';
+const ASSETS=['./','./index.html','./style.css?v=1.9.1','./app.js?v=1.9.1','./manifest.json','./icons/icon-192.png','./icons/icon-512.png'];
+self.addEventListener('install',event=>{
+  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));
+});
+self.addEventListener('activate',event=>{
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));
+    await self.clients.claim();
+  })());
+});
+self.addEventListener('fetch',event=>{
+  if(event.request.method!=='GET') return;
+  const request=event.request;
+  if(request.mode==='navigate' || request.destination==='script' || request.destination==='style'){
+    event.respondWith(fetch(request,{cache:'no-store'}).then(response=>{
+      const copy=response.clone();
+      caches.open(CACHE).then(cache=>cache.put(request,copy));
+      return response;
+    }).catch(()=>caches.match(request).then(hit=>hit||caches.match('./index.html'))));
     return;
   }
-  e.respondWith(caches.match(req).then(r=>r||fetch(req)));
+  event.respondWith(caches.match(request).then(hit=>hit||fetch(request)));
 });
